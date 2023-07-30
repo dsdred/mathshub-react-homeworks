@@ -1,12 +1,9 @@
 import React from "react";
 import "./App.css";
+import Profile from "./components/Profile";
 
 function App() {
-  return (
-    <div>
-      <h2>Мой профиль</h2>
-    </div>
-  );
+  return <Profile />;
 }
 
 export default App;
