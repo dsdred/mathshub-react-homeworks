@@ -3,6 +3,7 @@ import ProfilePicture from "./ProfilePicture";
 import ProfileName from "./ProfileName";
 import ProfileBio from "./ProfileBio";
 import ProfileCitation from "./ProfileCitation";
+import ProfileHobbies from "./ProfileHobbies";
 
 function Profile() {
   return (
@@ -11,6 +12,7 @@ function Profile() {
       <ProfileName />
       <ProfileBio />
       <ProfileCitation />
+      <ProfileHobbies />
     </>
   );
 }
