@@ -1,0 +1,10 @@
+.img-container {
+  display: flex;
+  justify-content: center;
+}
+
+.img-container-round {
+  border-radius: 150px;
+  border: 7px solid #170a62;
+  box-shadow: 0 0 10px #48474b;
+}
