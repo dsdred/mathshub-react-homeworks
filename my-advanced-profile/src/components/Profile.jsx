@@ -10,7 +10,7 @@ function Profile({ userData }) {
     <>
       <ProfilePicture src={userData.imageURL} />
       <ProfileName name={userData.name} />
-      <ProfileBio />
+      <ProfileBio bio={userData.bio} />
       <ProfileCitation />
       <ProfileHobbies />
     </>
