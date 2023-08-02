@@ -10,6 +10,7 @@ function App() {
     quote: "День, когда вы перестаете учиться, должен быть днем вашей смерти.",
     hobbies: ["Программирование", "Книги", "Пишу статьи", "Собираю Lego"],
     imageURL: "https://avatars.githubusercontent.com/u/67696364?v=4",
+    counter: 0,
   };
 
   return <Profile userData={userData} />;
