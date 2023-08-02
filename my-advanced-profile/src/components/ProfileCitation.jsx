@@ -1,11 +1,7 @@
 import React from "react";
 
-function ProfileCitation() {
-  return (
-    <blockquote>
-      День, когда вы перестаете учиться, должен быть днем вашей смерти.
-    </blockquote>
-  );
+function ProfileCitation({ quote }) {
+  return <blockquote>{quote}</blockquote>;
 }
 
 export default ProfileCitation;

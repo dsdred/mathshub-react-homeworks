@@ -11,7 +11,7 @@ function Profile({ userData }) {
       <ProfilePicture src={userData.imageURL} />
       <ProfileName name={userData.name} />
       <ProfileBio bio={userData.bio} />
-      <ProfileCitation />
+      <ProfileCitation quote={userData.quote} />
       <ProfileHobbies />
     </>
   );
