@@ -1,4 +1,5 @@
 import React from "react";
+import "./ProfileHobbies.css";
 
 function ProfileHobbies({ hobbies }) {
   return (

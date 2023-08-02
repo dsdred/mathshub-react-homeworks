@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Counter.css";
 
 function Counter({ counter }) {
   const [text, setText] = useState(counter);
@@ -13,12 +14,20 @@ function Counter({ counter }) {
   };
 
   return (
-    <div>
-      <div>{text}</div>
-      <button type="button" onClick={clicDecrease}>
+    <div className="counter-container">
+      <div className="counter-container_text">{`Счетчик: ${text}`}</div>
+      <button
+        type="button"
+        className="counter-container_button"
+        onClick={clicDecrease}
+      >
         Уменьшить
       </button>
-      <button type="button" onClick={clickIncrease}>
+      <button
+        type="button"
+        className="counter-container_button"
+        onClick={clickIncrease}
+      >
         Увеличить
       </button>
     </div>
