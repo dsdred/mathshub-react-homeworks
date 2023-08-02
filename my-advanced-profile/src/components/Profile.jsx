@@ -12,7 +12,7 @@ function Profile({ userData }) {
       <ProfileName name={userData.name} />
       <ProfileBio bio={userData.bio} />
       <ProfileCitation quote={userData.quote} />
-      <ProfileHobbies />
+      <ProfileHobbies hobbies={userData.hobbies} />
     </>
   );
 }

@@ -1,13 +1,13 @@
 import React from "react";
 
-function ProfileHobbies() {
+function ProfileHobbies({ hobbies }) {
   return (
     <div>
       <ul>
-        <li>Программирование</li>
-        <li>Книги</li>
-        <li>Пишу статьи</li>
-        <li>Собираю Lego</li>
+        <li>{hobbies[0]}</li>
+        <li>{hobbies[1]}</li>
+        <li>{hobbies[2]}</li>
+        <li>{hobbies[3]}</li>
       </ul>
     </div>
   );
