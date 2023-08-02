@@ -5,10 +5,10 @@ import ProfileBio from "./ProfileBio";
 import ProfileCitation from "./ProfileCitation";
 import ProfileHobbies from "./ProfileHobbies";
 
-function Profile() {
+function Profile({ userData }) {
   return (
     <>
-      <ProfilePicture />
+      <ProfilePicture src={userData.imageURL} />
       <ProfileName />
       <ProfileBio />
       <ProfileCitation />
