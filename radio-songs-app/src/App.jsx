@@ -3,6 +3,7 @@ import "./App.css";
 import SongRequestForm from "./components/SongRequestForm";
 import SongList from "./components/SongList";
 import Header from "./components/Header";
+import SongFilter from "./components/SongFilter";
 
 function App() {
   const songs = [
@@ -39,20 +40,22 @@ function App() {
   ];
 
   const [songList, setSongList] = useState(songs);
-
   const addNewSongHendler = (newSong) => {
     setSongList((prevSongs) => [newSong, ...prevSongs]);
-    // console.log(newSong);
   };
 
-  // console.log();
+  const [filterGenre, setFilterGenre] = useState("Поп");
+  const filterChangeHandler = (selectedGenre) => {
+    setFilterGenre(selectedGenre);
+  };
 
   return (
     <div className="App">
       <Header />
       <div className="container">
         <SongRequestForm addNewSong={addNewSongHendler} />
-        <SongList songs={songList} />
+        <SongFilter onChangeFilter={filterChangeHandler} />
+        <SongList songs={songList} filterGenre={filterGenre} />
       </div>
     </div>
   );

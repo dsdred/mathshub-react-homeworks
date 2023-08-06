@@ -1,18 +1,14 @@
 import React from "react";
 import SongItem from "./SongItem";
 
-function SongList({ songs }) {
+function SongList({ songs, filterGenre }) {
+  const filtredSongs = songs.filter((item) => item.genre === filterGenre);
+
   return (
     <div className="song-list">
-      {songs.map((song) => (
+      {filtredSongs.map((song) => (
         <SongItem song={song} key={song.id} />
       ))}
-
-      {/* <SongItem song={songs[0]} />
-      <SongItem song={songs[1]} />
-      <SongItem song={songs[2]} />
-      <SongItem song={songs[3]} />
-      <SongItem song={songs[4]} /> */}
     </div>
   );
 }
