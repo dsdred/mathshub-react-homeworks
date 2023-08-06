@@ -1,7 +1,7 @@
 import React from "react";
 import "./SongRequestForm.css";
 
-function SongRequestForm({ addNewSong }) {
+function SongRequestForm({ addNewSong, delSong }) {
   function submitFormHandler(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -10,6 +10,10 @@ function SongRequestForm({ addNewSong }) {
     newSong.id = Math.random().toString();
 
     addNewSong(newSong);
+  }
+
+  function delFormHandler() {
+    delSong();
   }
 
   return (
@@ -29,7 +33,12 @@ function SongRequestForm({ addNewSong }) {
         <option value="Фолк">Фолк</option>
         <option value="Классика">Классика</option>
       </select>
-      <button type="submit">Отправить</button>
+      <button type="submit" className="btnAdd">
+        +
+      </button>
+      <button type="button" onClick={delFormHandler} className="btnDel">
+        -
+      </button>
     </form>
   );
 }

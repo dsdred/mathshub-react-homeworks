@@ -49,11 +49,21 @@ function App() {
     setFilterGenre(selectedGenre);
   };
 
+  const delSongHendler = () => {
+    setSongList((prevSongs) => {
+      prevSongs.pop();
+      return [...prevSongs];
+    });
+  };
+
   return (
     <div className="App">
       <Header />
       <div className="container">
-        <SongRequestForm addNewSong={addNewSongHendler} />
+        <SongRequestForm
+          addNewSong={addNewSongHendler}
+          delSong={delSongHendler}
+        />
         <SongFilter onChangeFilter={filterChangeHandler} />
         <SongList songs={songList} filterGenre={filterGenre} />
       </div>
