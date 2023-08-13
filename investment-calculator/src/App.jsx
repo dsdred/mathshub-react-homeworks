@@ -7,9 +7,7 @@ import Tablelist from "./components/Tablelist";
 import CalculateInvestment from "./utils";
 
 function App() {
-  const yearlyData = [];
-
-  const [yearlyDataList, setYearlyDataList] = useState(yearlyData);
+  const [yearlyDataList, setYearlyDataList] = useState([]);
 
   const calculateHandler = (userInput) => {
     setYearlyDataList((prevYearlyData) => CalculateInvestment(userInput));
