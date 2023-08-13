@@ -1,7 +1,6 @@
 import React from "react";
 
 function Tablelist({ yearlyData }) {
-  console.log(yearlyData);
   return (
     <table className="result">
       <thead>
@@ -14,22 +13,15 @@ function Tablelist({ yearlyData }) {
         </tr>
       </thead>
       <tbody>
-        {/* {yearlyData.map((itemyearlyData) => (
-          <tr>
+        {yearlyData.map((itemyearlyData) => (
+          <tr key={itemyearlyData.year}>
             <td>{itemyearlyData.year}</td>
-            <td>{itemyearlyData.yearlyInterest}</td>
-            <td>{itemyearlyData.savingsEndOfYear}</td>
-            <td>{itemyearlyData.savingsEndOfYear}</td>
-            <td>{itemyearlyData.yearlyContribution}</td>
+            <td>{itemyearlyData.savingsEndOfYear.toFixed(2)}</td>
+            <td>{itemyearlyData.yearlyInterest.toFixed(2)}</td>
+            <td>{itemyearlyData.allYearlyInterest.toFixed(2)}</td>
+            <td>{itemyearlyData.chekAll.toFixed(2)}</td>
           </tr>
-        ))} */}
-        <tr>
-          <td>2022</td>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-          <td>4</td>
-        </tr>
+        ))}
       </tbody>
     </table>
   );
