@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import ErrorModal from "./ErrorModal";
+import "./Form.css";
 
 function Form({ calculateHandler }) {
   const [error, setError] = useState(null);
