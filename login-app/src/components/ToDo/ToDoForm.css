@@ -1,0 +1,40 @@
+.todo-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.todo-form input,
+.todo-form select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex-grow: 1; /* Make the input fields take up the available space */
+}
+
+.todo-form button {
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+}
+
+.btnAdd {
+  background-color: #007bff;
+}
+
+.btnAdd:hover {
+  background-color: #0056b3;
+}
+
+/* .btnDel {
+    background-color: rgb(214, 79, 77);
+  }
+  
+  .btnDel:hover {
+    background-color: rgb(209, 38, 35);
+  } */
