@@ -4,6 +4,7 @@ import Card from "../UI/Card/Card";
 import "./Home.css";
 import TodoList from "../ToDo/ToDoList";
 import ToDoForm from "../ToDo/ToDoForm";
+import ToDoFilter from "../ToDo/ToDoFilter";
 
 function Home() {
   // const [toDoList, setToDoList] = useState([]);
@@ -21,11 +22,17 @@ function Home() {
     setTasksList((prevTasks) => [newTask, ...prevTasks]);
   };
 
+  const [filterTask, setFilterTask] = useState(4);
+  const filterChangeHandler = (selectedTask) => {
+    setFilterTask(selectedTask);
+  };
+
   return (
     <Card className="home">
       <h1>Список дел:</h1>
       <ToDoForm addNewTask={addNewTaskHandler} tasksId={tasksId} />
-      <TodoList tasks={tasksList} />
+      <ToDoFilter onChangeFilter={filterChangeHandler} />
+      <TodoList tasks={tasksList} filterTask={filterTask} />
     </Card>
   );
 }
