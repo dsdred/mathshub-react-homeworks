@@ -1,30 +1,21 @@
 import React from "react";
 import "./ToDoForm.css";
 
-function ToDoForm() {
+function ToDoForm({ addNewTask, tasksId }) {
   function submitFormHandler(event) {
-    // event.preventDefault();
-    // const formData = new FormData(event.target);
+    event.preventDefault();
+    const formData = new FormData(event.target);
 
-    // const newSong = Object.fromEntries(formData.entries());
-    // newSong.id = Math.random().toString();
+    const newTask = Object.fromEntries(formData.entries());
+    newTask.id = tasksId + 1;
+    newTask.isCompleted = 1;
 
-    // addNewSong(newSong);
-    console.log(event);
+    addNewTask(newTask);
   }
-
-  //   function delFormHandler() {
-  //     delSong();
-  //   }
 
   return (
     <form className="todo-form" onSubmit={submitFormHandler}>
       <input type="text" placeholder="Задача" name="task" required />
-      <select name="isCompleted" required>
-        <option value="Complete">Выполнена</option>
-        <option value="Work">В работе</option>
-        <option value="All">Все</option>
-      </select>
       <button type="submit" className="btnAdd">
         +
       </button>
