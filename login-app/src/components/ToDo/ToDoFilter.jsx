@@ -9,10 +9,10 @@ function ToDoFilter({ onChangeFilter }) {
   return (
     <div>
       <select onChange={dropDownChangeHandler}>
-        <option value="0">Удалены</option>
+        <option value="4">Все</option>
         <option value="1">В работе</option>
         <option value="2">Выполнены</option>
-        <option value="4">Все</option>
+        <option value="0">Удалены</option>
       </select>
     </div>
   );

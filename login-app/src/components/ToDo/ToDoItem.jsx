@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ToDoItem.css";
+import ThemeContext from "../../context/theme-context";
 
 function ToDoItem({ task }) {
+  const contextData = useContext(ThemeContext);
+
   function TaskStatus(statusNow) {
     let message;
     if (statusNow === 0) {
@@ -21,7 +24,13 @@ function ToDoItem({ task }) {
         <span>{TaskStatus(task.isCompleted)}</span>
       </div>
 
-      <span className={`status${String(task.isCompleted)}`}>{task.task}</span>
+      <span
+        className={`status${String(
+          task.isCompleted + (contextData.liteStyle ? 0 : 10)
+        )}`}
+      >
+        {task.task}
+      </span>
 
       <div>
         <button type="button" className="btnComplete btn">

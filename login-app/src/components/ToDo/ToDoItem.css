@@ -22,6 +22,18 @@
   color: #194b3f;
 }
 
+.status10 {
+  color: #d12623;
+  text-decoration: line-through;
+}
+.status11 {
+  color: white;
+}
+
+.status12 {
+  color: #4fd5b6;
+}
+
 .btn {
   color: white;
   border: none;

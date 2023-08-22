@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 // import React from "react";
 import Card from "../UI/Card/Card";
 import "./Home.css";
 import TodoList from "../ToDo/ToDoList";
 import ToDoForm from "../ToDo/ToDoForm";
 import ToDoFilter from "../ToDo/ToDoFilter";
+import ThemeContext from "../../context/theme-context";
 
 function Home() {
+  const contextData = useContext(ThemeContext);
+
   // const [toDoList, setToDoList] = useState([]);
 
   const tasks = [
@@ -28,8 +31,8 @@ function Home() {
   };
 
   return (
-    <Card className="home">
-      <h1>Список дел:</h1>
+    <Card className={`home ${contextData.liteStyle ? "" : "dark"}`}>
+      <h2>Список дел:</h2>
       <ToDoForm addNewTask={addNewTaskHandler} tasksId={tasksId} />
       <ToDoFilter onChangeFilter={filterChangeHandler} />
       <TodoList tasks={tasksList} filterTask={filterTask} />
