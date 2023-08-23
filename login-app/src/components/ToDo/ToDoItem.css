@@ -1,0 +1,62 @@
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+.textId {
+  color: darkgrey;
+  font-size: 10px;
+}
+
+.status0 {
+  color: #d12623;
+  text-decoration: line-through;
+}
+.status1 {
+  color: black;
+}
+
+.status2 {
+  color: #194b3f;
+}
+
+.status10 {
+  color: #d12623;
+  text-decoration: line-through;
+}
+.status11 {
+  color: white;
+}
+
+.status12 {
+  color: #4fd5b6;
+}
+
+.btn {
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+}
+
+.btnComplete {
+  background-color: #267f6b;
+}
+
+.btnAdd:btncomplete {
+  background-color: #194b3f;
+}
+
+.btnDelete {
+  background-color: #d64f4d;
+}
+
+.btnDelete:hover {
+  background-color: #d12623;
+}
