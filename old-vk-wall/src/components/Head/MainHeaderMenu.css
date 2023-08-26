@@ -1,0 +1,23 @@
+ul {
+  height: 100%;
+}
+li {
+  height: 100%;
+  display: inline;
+  display: flex;
+  align-items: center;
+  float: left;
+  border-right: 1px solid #bbb;
+  border-left: 1px solid #bbb;
+}
+
+.textMenu {
+  display: block;
+  padding: 15px;
+  color: white;
+  font-size: 16px;
+}
+
+.textMenu:hover {
+  color: rgb(222, 211, 211);
+}
