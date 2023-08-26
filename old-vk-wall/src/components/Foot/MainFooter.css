@@ -1,0 +1,26 @@
+.liFooterMenu {
+  height: 100%;
+  display: inline;
+  display: flex;
+  align-items: center;
+  float: left;
+}
+
+.textFooterMenu {
+  display: block;
+  padding: 10px;
+  color: #2c5575;
+  font-size: 16px;
+}
+
+.textFooterMenu:hover {
+  color: #4991c7;
+}
+
+.copyrightStyle {
+  color: #030303;
+}
+
+.authorStyle {
+  color: #2c5575;
+}

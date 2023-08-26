@@ -3,18 +3,18 @@ import "./MainHeaderMenu.css";
 
 function MainHeaderMenu() {
   return (
-    <ul>
-      <li>
+    <ul className="ulHeaderMenu">
+      <li className="liHeaderMenu">
         <a href="#Login" className="textMenu">
           вход
         </a>
       </li>
-      <li>
+      <li className="liHeaderMenu">
         <a href="#registration" className="textMenu">
           регистрация
         </a>
       </li>
-      <li>
+      <li className="liHeaderMenu">
         <a href="#helps" className="textMenu">
           помощь
         </a>

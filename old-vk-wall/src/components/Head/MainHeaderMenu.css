@@ -1,23 +1,22 @@
-ul {
+.ulHeaderMenu {
   height: 100%;
 }
-li {
+.liHeaderMenu {
   height: 100%;
   display: inline;
   display: flex;
   align-items: center;
   float: left;
-  border-right: 1px solid #bbb;
-  border-left: 1px solid #bbb;
+  border-left: 1px solid #5580ad;
 }
 
 .textMenu {
   display: block;
-  padding: 15px;
-  color: white;
+  padding: 10px;
+  color: #d2e3f3;
   font-size: 16px;
 }
 
 .textMenu:hover {
-  color: rgb(222, 211, 211);
+  color: #7492b3;
 }
