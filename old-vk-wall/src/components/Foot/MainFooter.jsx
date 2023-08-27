@@ -5,11 +5,11 @@ import FooterMenu from "./FooterMenu";
 
 function MainFooter() {
   return (
-    <footer>
+    <section className="footerContayner">
       <FooterMenu />
       <p className="copyrightStyle">В Контакте © 2006-2008</p>
       <p className="authorStyle">Павел Дуров</p>
-    </footer>
+    </section>
   );
 }
 

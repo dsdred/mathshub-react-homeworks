@@ -4,7 +4,7 @@ import "./MainFooter.css";
 
 function FooterMenu() {
   return (
-    <ul>
+    <ul className="ulFooterMenu">
       <li className="liFooterMenu">
         <a href="#about" className="textFooterMenu">
           о сайте

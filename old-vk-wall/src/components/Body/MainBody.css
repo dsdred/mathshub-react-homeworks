@@ -1,8 +1,13 @@
 .bodyStyle {
-  background-color: aqua;
   display: flex;
   position: fixed;
   top: 80px;
   left: 0;
   width: 100%;
+}
+
+.bodyMessageContayner {
+  text-align: start;
+  width: 90%;
+  border-left: 2px solid #bcc1c6;
 }
