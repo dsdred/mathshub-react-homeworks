@@ -7,14 +7,14 @@ import BodyWelcome from "./BodyWelcome";
 import BodyMessegeForm from "./BodyMessegeForm";
 import MessageList from "./MessegeList";
 
-function MainBody() {
+function MainBody({ Messages, addMessagesHandler }) {
   return (
     <div className="bodyStyle">
       <LeftForm />
       <div className="bodyMessageContayner">
         <BodyWelcome />
-        <BodyMessegeForm />
-        <MessageList />
+        <BodyMessegeForm addMessagesHandler={addMessagesHandler} />
+        <MessageList Messages={Messages} />
       </div>
     </div>
   );

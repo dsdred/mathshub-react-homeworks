@@ -1,5 +1,6 @@
 .messageListContayner {
   width: 99%;
+  overflow-y: scroll;
 }
 
 .messageListItemBody {
