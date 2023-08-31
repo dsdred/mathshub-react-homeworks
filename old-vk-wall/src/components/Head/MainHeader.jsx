@@ -6,12 +6,9 @@ import MainHeaderMenu from "./MainHeaderMenu";
 
 function MainHeader() {
   return (
-    <header>
-      <div className="hederStyle">
-        <img className="headerImg" src={logoImg} alt="В контакте" />
-
-        <MainHeaderMenu />
-      </div>
+    <header className="hederStyle">
+      <img className="headerImg" src={logoImg} alt="В контакте" />
+      <MainHeaderMenu />
     </header>
   );
 }

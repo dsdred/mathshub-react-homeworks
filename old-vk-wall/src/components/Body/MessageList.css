@@ -1,6 +1,6 @@
 .messageListContayner {
   width: 99%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .messageListItemBody {
@@ -53,4 +53,8 @@
   text-align: center;
   padding: 4px;
   color: #6e7e9f;
+}
+
+.smallSpace {
+  height: 90px;
 }

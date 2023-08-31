@@ -1,5 +1,7 @@
-form {
-  width: 20%;
+.leftFormStyle {
+  width: 100%;
+  max-width: 400px;
+  /* position: fixed; */
 }
 .inputContayner {
   text-align: start;

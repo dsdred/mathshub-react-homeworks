@@ -18,12 +18,12 @@
 }
 
 .inputNewMessage::placeholder {
-  transition: 0.5s; /* Время трансформации */
-  color: #aaa; /* Цвет подсказки */
+  transition: 0.5s;
+  color: #aaa;
 }
 .inputNewMessage:focus::placeholder {
-  font-size: 10px; /* Размер шрифта */
-  transform: translateY(-26px); /* Сдвигаем вверх */
+  font-size: 10px;
+  transform: translateY(-26px);
 }
 
 .btnAdd {

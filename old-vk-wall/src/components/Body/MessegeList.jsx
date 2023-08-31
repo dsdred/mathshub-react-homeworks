@@ -31,6 +31,7 @@ function MessageList({ Messages }) {
           </div>
         </div>
       ))}
+      <div className="smallSpace"></div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import "./LeftForm.css";
 
 function LeftForm() {
   return (
-    <form>
+    <form className="leftFormStyle">
       <div className="inputContayner">
         <label className="labelTextStyle">Email:</label>
         <input type="email" />

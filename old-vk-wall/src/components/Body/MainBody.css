@@ -1,13 +1,11 @@
 .bodyStyle {
-  display: flex;
-  position: fixed;
-  top: 80px;
-  left: 0;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 20% 80%;
+
+  margin-top: 80px;
 }
 
 .bodyMessageContayner {
   text-align: start;
-  width: 90%;
   border-left: 2px solid #bcc1c6;
 }
