@@ -1,0 +1,47 @@
+.messageContayner {
+  width: 99%;
+  height: 150px;
+}
+.addMessageForm {
+  margin: 2px;
+
+  width: 99%;
+  height: 140px;
+  background-color: #f3f8fb;
+  border: 3px solid #f9f9f9;
+}
+
+.inputNewMessage {
+  margin: 3px 3px;
+  height: 75px;
+  width: 99%;
+}
+
+.inputNewMessage::placeholder {
+  transition: 0.5s;
+  color: #aaa;
+}
+.inputNewMessage:focus::placeholder {
+  font-size: 10px;
+  transform: translateY(-26px);
+}
+
+.btnAdd {
+  margin-top: 5px;
+  margin-left: 10px;
+  width: 180px;
+  background-color: #37648e;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+
+  font-size: 16px;
+}
+
+.btnAdd:hover,
+.btnAdd:focus {
+  opacity: 0.75;
+}

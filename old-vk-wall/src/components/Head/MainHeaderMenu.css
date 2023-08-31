@@ -1,0 +1,27 @@
+.ulHeaderMenu {
+  height: 100%;
+}
+.liHeaderMenu {
+  height: 100%;
+  display: inline;
+  display: flex;
+  align-items: center;
+  float: left;
+  border-left: 1px solid #5580ad;
+}
+
+.textMenu {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.textMenu:hover {
+  color: #d2e3f3;
+}
+
+.iLikeIt {
+  color: #aec1c7;
+  text-align: 16px;
+}
