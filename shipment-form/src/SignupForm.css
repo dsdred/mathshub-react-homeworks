@@ -1,18 +1,35 @@
-legend {
+form {
   margin-top: 75px;
-  /* margin-top: 10px; */
+}
+.blockLegend {
+  margin-top: 5px;
   align-items: center;
   color: #354d88;
   font-size: 20px;
 
-  border: 2px solid #264288;
+  /* border: 1px solid #264288; */
 }
 
 .shipmentFormSenderContainer,
 .shipmentFormRecipientContainer {
+  margin-bottom: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr 2fr;
-  gap: 30px;
+  gap: 10px;
+}
+
+.shipmentFormOptionsContainer {
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.shipmentFormDimensionsContainer {
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
 }
 
 .inputElement > input {
