@@ -39,6 +39,13 @@ function SignupForm() {
       addressRecipient: Yup.string()
         .min(30, "Адрес не может быть меньше 30 символов")
         .required("Адрес не заполнен"),
+      shippingWeight: Yup.number().min(
+        0,
+        "Вес отправления не может быть отрицательным"
+      ),
+      parcelLength: Yup.number().min(0, "Длина не может быть отрицательной"),
+      parcelWidth: Yup.number().min(0, "Ширина не может быть отрицательной"),
+      parcelHeight: Yup.number().min(0, "Высота не может быть отрицательной"),
     }),
     onSubmit: (values) => {
       console.log("On submit=", values);
