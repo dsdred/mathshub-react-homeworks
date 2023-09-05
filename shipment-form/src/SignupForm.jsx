@@ -8,15 +8,15 @@ function SignupForm() {
   const [sendsList, setSendsList] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem("sends", JSON.stringify(sendsList));
-  }, [sendsList]);
-
-  useEffect(() => {
     let storageSends;
     if (localStorage.getItem("sends") !== null)
       storageSends = JSON.parse(localStorage.getItem("sends"));
     setSendsList((prevSends) => [...storageSends, ...prevSends]);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("sends", JSON.stringify(sendsList));
+  }, [sendsList]);
 
   const addNewSendHandler = (newSend) => {
     setSendsList((prevSends) => [...prevSends, newSend]);
