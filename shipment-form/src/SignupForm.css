@@ -49,6 +49,11 @@ form {
   border: 2px solid #de4537;
 }
 
+.standartInputCheckboxStyle {
+  display: block;
+  height: 20px;
+}
+
 .inputElement > p {
   color: #de4537;
   font-size: 15px;

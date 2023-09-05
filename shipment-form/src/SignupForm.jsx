@@ -17,6 +17,8 @@ function SignupForm() {
       parcelLength: undefined,
       parcelWidth: undefined,
       parcelHeight: undefined,
+      picked: "",
+      sendType: "Обычное",
     },
     validationSchema: Yup.object({
       firstName: Yup.string()
@@ -189,46 +191,32 @@ function SignupForm() {
       <legend className="blockLegend">
         Параметры:
         <div className="shipmentFormOptionsContainer">
-          <div>
-            <input
-              type="radio"
-              id="sendType1"
-              name="sendType"
-              value={formik.values.sendType}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            <label for="sendType1">Обычное</label>
-
-            <input
-              type="radio"
-              id="sendType2"
-              name="sendType"
-              value={formik.values.sendType}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            <label for="sendType2">Заказное</label>
-
-            <input
-              type="radio"
-              id="sendType3"
-              name="sendType"
-              value={formik.values.sendType}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            <label for="sendType3">Срочное</label>
-          </div>
+          <select
+            name="sendType"
+            id="sendType"
+            value={formik.values.sendType}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className="standartInputStyle"
+          >
+            <option value="Обычное">Обычное</option>
+            <option value="Заказное">Заказное</option>
+            <option value="Срочное">Срочное</option>
+          </select>
 
           <div>
-            <input
-              type="checkbox"
-              id="insurance"
-              name="insurance"
-              value={formik.values.insurance}
-            />
-            <label for="insurance">Страхование</label>
+            <label>
+              Страхование
+              <input
+                className="standartInputCheckboxStyle"
+                type="checkbox"
+                id="insurance"
+                name="insurance"
+                value={formik.values.insurance}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+            </label>
           </div>
 
           <div className="inputElement">
