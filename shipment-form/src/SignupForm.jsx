@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./SignupForm.css";
+import SendList from "./components/SendList";
 
 function SignupForm() {
+  const [sendsList, setSendsList] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem("sends", JSON.stringify(sendsList));
+  }, [sendsList]);
+
+  useEffect(() => {
+    let storageSends;
+    if (localStorage.getItem("sends") !== null)
+      storageSends = JSON.parse(localStorage.getItem("sends"));
+    setSendsList((prevSends) => [...storageSends, ...prevSends]);
+  }, []);
+
+  const addNewSendHandler = (newSend) => {
+    setSendsList((prevSends) => [...prevSends, newSend]);
+  };
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -17,7 +35,6 @@ function SignupForm() {
       parcelLength: undefined,
       parcelWidth: undefined,
       parcelHeight: undefined,
-      picked: "",
       sendType: "Обычное",
     },
     validationSchema: Yup.object({
@@ -50,266 +67,296 @@ function SignupForm() {
       parcelHeight: Yup.number().min(0, "Высота не может быть отрицательной"),
     }),
     onSubmit: (values) => {
-      console.log("On submit=", values);
+      const newSend = {
+        id: Date.now(),
+        firstName: values.firstName,
+        phone: values.phone,
+        address: values.address,
+        firstNameRecipient: values.firstNameRecipient,
+        phoneRecipient: values.phoneRecipient,
+        addressRecipient: values.addressRecipient,
+        shippingWeight:
+          typeof values.shippingWeight === "undefined"
+            ? 0
+            : values.shippingWeight,
+        insurance: values.insurance,
+        parcelLength:
+          typeof values.parcelLength === "undefined"
+            ? 0
+            : values.shippingWeight,
+        parcelWidth:
+          typeof values.parcelWidth === "undefined" ? 0 : values.shippingWeight,
+        parcelHeight:
+          typeof values.parcelHeight === "undefined"
+            ? 0
+            : values.shippingWeight,
+        sendType: values.sendType,
+      };
+
+      addNewSendHandler(newSend);
     },
   });
 
-  // console.log("значения=", formik.values);
-
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <legend className="blockLegend">
-        Отправитель:
-        <div className="shipmentFormSenderContainer">
-          <div className="inputElement">
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              placeholder="ФИО"
-              value={formik.values.firstName}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={`${
-                formik.errors.firstName && formik.touched.firstName
-                  ? "errorInputStyle"
-                  : "standartInputStyle"
-              }`}
-            />
-            {formik.errors.firstName && formik.touched.firstName && (
-              <p>{formik.errors.firstName}</p>
-            )}
-          </div>
-          <div className="inputElement">
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="Телефон"
-              value={formik.values.phone}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={`${
-                formik.errors.phone && formik.touched.phone
-                  ? "errorInputStyle"
-                  : "standartInputStyle"
-              }`}
-            />
-            {formik.errors.phone && formik.touched.phone && (
-              <p>{formik.errors.phone}</p>
-            )}
-          </div>
-          <div className="inputElement">
-            <input
-              type="text"
-              id="address"
-              name="address"
-              placeholder="Адрес"
-              value={formik.values.address}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={`${
-                formik.errors.address && formik.touched.address
-                  ? "errorInputStyle"
-                  : "standartInputStyle"
-              }`}
-            />
-            {formik.errors.address && formik.touched.address && (
-              <p>{formik.errors.address}</p>
-            )}
-          </div>
-        </div>
-      </legend>
-
-      <legend className="blockLegend">
-        Получатель:
-        <div className="shipmentFormRecipientContainer">
-          <div className="inputElement">
-            <input
-              type="text"
-              id="firstNameRecipient"
-              name="firstNameRecipient"
-              placeholder="ФИО"
-              value={formik.values.firstNameRecipient}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={`${
-                formik.errors.firstNameRecipient &&
-                formik.touched.firstNameRecipient
-                  ? "errorInputStyle"
-                  : "standartInputStyle"
-              }`}
-            />
-            {formik.errors.firstNameRecipient &&
-              formik.touched.firstNameRecipient && (
-                <p>{formik.errors.firstNameRecipient}</p>
-              )}
-          </div>
-          <div className="inputElement">
-            <input
-              type="tel"
-              id="phoneRecipient"
-              name="phoneRecipient"
-              placeholder="Телефон"
-              value={formik.values.phoneRecipient}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={`${
-                formik.errors.phoneRecipient && formik.touched.phoneRecipient
-                  ? "errorInputStyle"
-                  : "standartInputStyle"
-              }`}
-            />
-            {formik.errors.phoneRecipient && formik.touched.phoneRecipient && (
-              <p>{formik.errors.phoneRecipient}</p>
-            )}
-          </div>
-          <div className="inputElement">
-            <input
-              type="text"
-              id="addressRecipient"
-              name="addressRecipient"
-              placeholder="Адрес"
-              value={formik.values.addressRecipient}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={`${
-                formik.errors.addressRecipient &&
-                formik.touched.addressRecipient
-                  ? "errorInputStyle"
-                  : "standartInputStyle"
-              }`}
-            />
-            {formik.errors.addressRecipient &&
-              formik.touched.addressRecipient && (
-                <p>{formik.errors.addressRecipient}</p>
-              )}
-          </div>
-        </div>
-      </legend>
-
-      <legend className="blockLegend">
-        Параметры:
-        <div className="shipmentFormOptionsContainer">
-          <select
-            name="sendType"
-            id="sendType"
-            value={formik.values.sendType}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            className="standartInputStyle"
-          >
-            <option value="Обычное">Обычное</option>
-            <option value="Заказное">Заказное</option>
-            <option value="Срочное">Срочное</option>
-          </select>
-
-          <div>
-            <label>
-              Страхование
+    <>
+      <form onSubmit={formik.handleSubmit}>
+        <legend className="blockLegend">
+          Отправитель:
+          <div className="shipmentFormSenderContainer">
+            <div className="inputElement">
               <input
-                className="standartInputCheckboxStyle"
-                type="checkbox"
-                id="insurance"
-                name="insurance"
-                value={formik.values.insurance}
+                type="text"
+                id="firstName"
+                name="firstName"
+                placeholder="ФИО"
+                value={formik.values.firstName}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                className={`${
+                  formik.errors.firstName && formik.touched.firstName
+                    ? "errorInputStyle"
+                    : "standartInputStyle"
+                }`}
               />
-            </label>
+              {formik.errors.firstName && formik.touched.firstName && (
+                <p>{formik.errors.firstName}</p>
+              )}
+            </div>
+            <div className="inputElement">
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Телефон"
+                value={formik.values.phone}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className={`${
+                  formik.errors.phone && formik.touched.phone
+                    ? "errorInputStyle"
+                    : "standartInputStyle"
+                }`}
+              />
+              {formik.errors.phone && formik.touched.phone && (
+                <p>{formik.errors.phone}</p>
+              )}
+            </div>
+            <div className="inputElement">
+              <input
+                type="text"
+                id="address"
+                name="address"
+                placeholder="Адрес"
+                value={formik.values.address}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className={`${
+                  formik.errors.address && formik.touched.address
+                    ? "errorInputStyle"
+                    : "standartInputStyle"
+                }`}
+              />
+              {formik.errors.address && formik.touched.address && (
+                <p>{formik.errors.address}</p>
+              )}
+            </div>
           </div>
+        </legend>
 
-          <div className="inputElement">
-            <input
-              type="number"
-              id="shippingWeight"
-              name="shippingWeight"
-              placeholder="Вес отправления (кг)"
-              value={formik.values.shippingWeight}
+        <legend className="blockLegend">
+          Получатель:
+          <div className="shipmentFormRecipientContainer">
+            <div className="inputElement">
+              <input
+                type="text"
+                id="firstNameRecipient"
+                name="firstNameRecipient"
+                placeholder="ФИО"
+                value={formik.values.firstNameRecipient}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className={`${
+                  formik.errors.firstNameRecipient &&
+                  formik.touched.firstNameRecipient
+                    ? "errorInputStyle"
+                    : "standartInputStyle"
+                }`}
+              />
+              {formik.errors.firstNameRecipient &&
+                formik.touched.firstNameRecipient && (
+                  <p>{formik.errors.firstNameRecipient}</p>
+                )}
+            </div>
+            <div className="inputElement">
+              <input
+                type="tel"
+                id="phoneRecipient"
+                name="phoneRecipient"
+                placeholder="Телефон"
+                value={formik.values.phoneRecipient}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className={`${
+                  formik.errors.phoneRecipient && formik.touched.phoneRecipient
+                    ? "errorInputStyle"
+                    : "standartInputStyle"
+                }`}
+              />
+              {formik.errors.phoneRecipient &&
+                formik.touched.phoneRecipient && (
+                  <p>{formik.errors.phoneRecipient}</p>
+                )}
+            </div>
+            <div className="inputElement">
+              <input
+                type="text"
+                id="addressRecipient"
+                name="addressRecipient"
+                placeholder="Адрес"
+                value={formik.values.addressRecipient}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className={`${
+                  formik.errors.addressRecipient &&
+                  formik.touched.addressRecipient
+                    ? "errorInputStyle"
+                    : "standartInputStyle"
+                }`}
+              />
+              {formik.errors.addressRecipient &&
+                formik.touched.addressRecipient && (
+                  <p>{formik.errors.addressRecipient}</p>
+                )}
+            </div>
+          </div>
+        </legend>
+
+        <legend className="blockLegend">
+          Параметры:
+          <div className="shipmentFormOptionsContainer">
+            <select
+              name="sendType"
+              id="sendType"
+              value={formik.values.sendType}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className={`${
-                formik.errors.shippingWeight && formik.touched.shippingWeight
-                  ? "errorInputStyle"
-                  : "standartInputStyle"
-              }`}
-            />
-            {formik.errors.shippingWeight && formik.touched.shippingWeight && (
-              <p>{formik.errors.shippingWeight}</p>
-            )}
-          </div>
-        </div>
-      </legend>
+              className="standartInputStyle"
+            >
+              <option value="Обычное">Обычное</option>
+              <option value="Заказное">Заказное</option>
+              <option value="Срочное">Срочное</option>
+            </select>
 
-      <legend className="blockLegend">
-        Габариты:
-        <div className="shipmentFormDimensionsContainer">
-          <div className="inputElement">
-            <input
-              type="number"
-              id="parcelLength"
-              name="parcelLength"
-              placeholder="Длина"
-              value={formik.values.parcelLength}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={`${
-                formik.errors.parcelLength && formik.touched.parcelLength
-                  ? "errorInputStyle"
-                  : "standartInputStyle"
-              }`}
-            />
-            {formik.errors.parcelLength && formik.touched.parcelLength && (
-              <p>{formik.errors.parcelLength}</p>
-            )}
-          </div>
+            <div>
+              <label>
+                Страхование
+                <input
+                  className="standartInputCheckboxStyle"
+                  type="checkbox"
+                  id="insurance"
+                  name="insurance"
+                  value={formik.values.insurance}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </label>
+            </div>
 
-          <div className="inputElement">
-            <input
-              type="number"
-              id="parcelWidth"
-              name="parcelWidth"
-              placeholder="Ширина"
-              value={formik.values.parcelWidth}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={`${
-                formik.errors.parcelWidth && formik.touched.parcelWidth
-                  ? "errorInputStyle"
-                  : "standartInputStyle"
-              }`}
-            />
-            {formik.errors.parcelWidth && formik.touched.parcelWidth && (
-              <p>{formik.errors.parcelWidth}</p>
-            )}
+            <div className="inputElement">
+              <input
+                type="number"
+                id="shippingWeight"
+                name="shippingWeight"
+                placeholder="Вес отправления (кг)"
+                value={formik.values.shippingWeight}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className={`${
+                  formik.errors.shippingWeight && formik.touched.shippingWeight
+                    ? "errorInputStyle"
+                    : "standartInputStyle"
+                }`}
+              />
+              {formik.errors.shippingWeight &&
+                formik.touched.shippingWeight && (
+                  <p>{formik.errors.shippingWeight}</p>
+                )}
+            </div>
           </div>
+        </legend>
 
-          <div className="inputElement">
-            <input
-              type="number"
-              id="parcelHeight"
-              name="parcelHeight"
-              placeholder="Высота"
-              value={formik.values.parcelHeight}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className={`${
-                formik.errors.parcelHeight && formik.touched.parcelHeight
-                  ? "errorInputStyle"
-                  : "standartInputStyle"
-              }`}
-            />
-            {formik.errors.parcelHeight && formik.touched.parcelHeight && (
-              <p>{formik.errors.parcelHeight}</p>
-            )}
+        <legend className="blockLegend">
+          Габариты:
+          <div className="shipmentFormDimensionsContainer">
+            <div className="inputElement">
+              <input
+                type="number"
+                id="parcelLength"
+                name="parcelLength"
+                placeholder="Длина"
+                value={formik.values.parcelLength}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className={`${
+                  formik.errors.parcelLength && formik.touched.parcelLength
+                    ? "errorInputStyle"
+                    : "standartInputStyle"
+                }`}
+              />
+              {formik.errors.parcelLength && formik.touched.parcelLength && (
+                <p>{formik.errors.parcelLength}</p>
+              )}
+            </div>
+
+            <div className="inputElement">
+              <input
+                type="number"
+                id="parcelWidth"
+                name="parcelWidth"
+                placeholder="Ширина"
+                value={formik.values.parcelWidth}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className={`${
+                  formik.errors.parcelWidth && formik.touched.parcelWidth
+                    ? "errorInputStyle"
+                    : "standartInputStyle"
+                }`}
+              />
+              {formik.errors.parcelWidth && formik.touched.parcelWidth && (
+                <p>{formik.errors.parcelWidth}</p>
+              )}
+            </div>
+
+            <div className="inputElement">
+              <input
+                type="number"
+                id="parcelHeight"
+                name="parcelHeight"
+                placeholder="Высота"
+                value={formik.values.parcelHeight}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className={`${
+                  formik.errors.parcelHeight && formik.touched.parcelHeight
+                    ? "errorInputStyle"
+                    : "standartInputStyle"
+                }`}
+              />
+              {formik.errors.parcelHeight && formik.touched.parcelHeight && (
+                <p>{formik.errors.parcelHeight}</p>
+              )}
+            </div>
           </div>
-        </div>
-      </legend>
+        </legend>
 
-      <button type="submit" className="standartBtn">
-        ✉ Отправить
-      </button>
-    </form>
+        <button type="submit" className="standartBtn">
+          ✉ Отправить
+        </button>
+      </form>
+      <div>список</div>
+      <SendList sends={sendsList} />
+    </>
   );
 }
 
